@@ -36,10 +36,16 @@ imagem:"refri_2lt.png"
 },
 
 {
-nome:"Espetinho",
+nome:"Espetinho Carne Bovina",
 preco:10,
 categoria:"espetinhos",
 imagem:"espetinho.png"
+},
+{
+nome:"Espetinho Frango com bacon",
+preco:10,
+categoria:"espetinhos",
+imagem:"espetinho frango com bacon.png"
 }
 
 ];
