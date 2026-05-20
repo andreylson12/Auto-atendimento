@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Point Beer</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+<h1>🍺 POINT BEER 🍺</h1>
+<p>Autoatendimento Inteligente</p>
+</header>
+
+<div class="categorias">
+<button onclick="filtrar('cervejas')">🍺 Cervejas</button>
+<button onclick="filtrar('refrigerantes')">🥤 Refrigerantes</button>
+<button onclick="filtrar('espetinhos')">🍢 Espetinhos</button>
+<button onclick="filtrar('jantinhas')">🍛 Jantinhas</button>
+</div>
+
+<section class="produtos" id="produtos"></section>
+
+<section class="carrinho">
+<h2>🛒 Carrinho</h2>
+<div id="itens"></div>
+<div id="total">Total: R$ 0,00</div>
+<button onclick="mostrarPix()">PAGAR</button>
+</section>
+
+<section class="pix" id="pixArea">
+<h2>💳 PAGAMENTO PIX</h2>
+<div id="valorPix"></div>
+<img src="imagens/qr_pix.png">
+<p>Após pagar mostre o comprovante</p>
+</section>
+
+<script src="js/app.js"></script>
+
+</body>
+</html>
