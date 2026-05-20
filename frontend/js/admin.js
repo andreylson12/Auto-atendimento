@@ -1,17 +1,5 @@
 let produtos = [];
 
-async function carregarProdutos(){
-
-const response = await fetch(
-'produtos.json'
-);
-
-produtos = await response.json();
-
-atualizarLista();
-
-}
-
 function cadastrarProduto(){
 
 const nome =
@@ -28,17 +16,17 @@ document.getElementById('imagem').value;
 
 if(!nome || !preco || !imagem){
 
-alert('Preencha todos campos');
+alert('Preencha todos os campos');
 
 return;
 
 }
 
 produtos.push({
-nome,
-preco,
-categoria,
-imagem
+nome:nome,
+preco:preco,
+categoria:categoria,
+imagem:imagem
 });
 
 atualizarLista();
@@ -76,13 +64,13 @@ lista.innerHTML += `
 
 <button onclick="removerProduto(${index})"
 style="
-margin-top:10px;
 background:red;
 color:white;
 padding:10px;
 border:none;
 border-radius:10px;
 cursor:pointer;
+margin-top:10px;
 ">
 Excluir
 </button>
@@ -115,5 +103,3 @@ document.getElementById('preco').value = '';
 document.getElementById('imagem').value = '';
 
 }
-
-carregarProdutos();
