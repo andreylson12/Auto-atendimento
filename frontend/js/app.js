@@ -1,16 +1,53 @@
-let produtos = [];
+let produtos = [
+
+{
+nome:"Heineken",
+preco:9,
+categoria:"cervejas",
+imagem:"heineken.png"
+},
+
+{
+nome:"Skol 600ml",
+preco:10,
+categoria:"cervejas",
+imagem:"skol_600.png"
+},
+
+{
+nome:"Original 600ml",
+preco:12,
+categoria:"cervejas",
+imagem:"original_600.png"
+},
+
+{
+nome:"Refrigerante Lata",
+preco:6,
+categoria:"refrigerantes",
+imagem:"refri_lata.png"
+},
+
+{
+nome:"Refrigerante 2L",
+preco:12,
+categoria:"refrigerantes",
+imagem:"refri_2lt.png"
+},
+
+{
+nome:"Espetinho",
+preco:10,
+categoria:"espetinhos",
+imagem:"espetinho.png"
+}
+
+];
+
 let carrinho = [];
 let total = 0;
 
-async function carregarProdutos(){
-
-const response = await fetch('http://localhost:3000/produtos');
-
-produtos = await response.json();
-
 renderizarProdutos(produtos);
-
-}
 
 function renderizarProdutos(lista){
 
@@ -21,14 +58,23 @@ area.innerHTML = '';
 lista.forEach(produto => {
 
 area.innerHTML += `
+
 <div class="card">
-<img src="imagens/${produto.imagem}">
+
+<img src="frontend/imagens/${produto.imagem}">
+
 <h2>${produto.nome}</h2>
-<div class="preco">R$ ${produto.preco}</div>
+
+<div class="preco">
+R$ ${produto.preco}
+</div>
+
 <button onclick="addCarrinho('${produto.nome}',${produto.preco})">
 Adicionar
 </button>
+
 </div>
+
 `;
 
 });
@@ -77,17 +123,16 @@ document.getElementById('total').innerHTML =
 function mostrarPix(){
 
 if(total <= 0){
+
 alert('Adicione produtos');
+
 return;
+
 }
 
-const area = document.getElementById('pixArea');
-
-area.style.display = 'block';
+document.getElementById('pixArea').style.display = 'block';
 
 document.getElementById('valorPix').innerHTML =
 `R$ ${total.toFixed(2)}`;
 
 }
-
-carregarProdutos();
