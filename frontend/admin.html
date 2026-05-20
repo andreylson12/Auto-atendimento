@@ -1,124 +1,119 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+let produtos = [];
 
-<head>
+async function carregarProdutos(){
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+const response = await fetch(
+'produtos.json'
+);
 
-<title>Admin Point Beer</title>
+produtos = await response.json();
 
-<link rel="stylesheet" href="css/style.css">
+atualizarLista();
 
-<style>
-
-.admin{
-max-width:700px;
-margin:auto;
-background:#1a1a1a;
-padding:30px;
-border-radius:20px;
 }
 
-.admin h1{
-text-align:center;
-margin-bottom:30px;
-color:#f5c518;
+function cadastrarProduto(){
+
+const nome =
+document.getElementById('nome').value;
+
+const preco =
+Number(document.getElementById('preco').value);
+
+const categoria =
+document.getElementById('categoria').value;
+
+const imagem =
+document.getElementById('imagem').value;
+
+if(!nome || !preco || !imagem){
+
+alert('Preencha todos os campos');
+
+return;
+
 }
 
-.admin input,
-.admin select{
-width:100%;
-padding:15px;
-margin-bottom:15px;
+produtos.push({
+nome,
+preco,
+categoria,
+imagem
+});
+
+atualizarLista();
+
+limparCampos();
+
+}
+
+function atualizarLista(){
+
+const lista =
+document.getElementById('lista');
+
+lista.innerHTML = '';
+
+produtos.forEach((produto,index)=>{
+
+lista.innerHTML += `
+
+<div class="itemAdmin">
+
+<h3>${produto.nome}</h3>
+
+<p>
+💰 R$ ${produto.preco}
+</p>
+
+<p>
+📂 ${produto.categoria}
+</p>
+
+<p>
+🖼️ ${produto.imagem}
+</p>
+
+<button onclick="removerProduto(${index})"
+style="
+margin-top:10px;
+background:red;
+color:white;
+padding:10px;
 border:none;
 border-radius:10px;
-font-size:18px;
-}
-
-.admin button{
-width:100%;
-padding:18px;
-border:none;
-border-radius:12px;
-background:#00ff88;
-font-size:22px;
-font-weight:bold;
 cursor:pointer;
-}
-
-.lista{
-margin-top:30px;
-}
-
-.itemAdmin{
-background:#111;
-padding:15px;
-border-radius:10px;
-margin-bottom:10px;
-}
-
-textarea{
-width:100%;
-height:300px;
-margin-top:20px;
-padding:15px;
-border-radius:10px;
-font-size:16px;
-}
-
-</style>
-
-</head>
-
-<body>
-
-<div class="admin">
-
-<h1>⚙️ Painel Admin</h1>
-
-<input type="text" id="nome" placeholder="Nome do produto">
-
-<input type="number" id="preco" placeholder="Preço">
-
-<select id="categoria">
-
-<option value="cervejas">
-Cervejas
-</option>
-
-<option value="refrigerantes">
-Refrigerantes
-</option>
-
-<option value="espetinhos">
-Espetinhos
-</option>
-
-<option value="jantinhas">
-Jantinhas
-</option>
-
-</select>
-
-<input type="text" id="imagem" placeholder="Nome da imagem">
-
-<button onclick="cadastrarProduto()">
-➕ Cadastrar Produto
+">
+Excluir
 </button>
-
-<div class="lista" id="lista"></div>
-
-<h2 style="margin-top:30px;">
-📄 produtos.json
-</h2>
-
-<textarea id="jsonArea"></textarea>
 
 </div>
 
-<script src="js/admin.js"></script>
+`;
 
-</body>
+});
 
-</html>
+document.getElementById('jsonArea').value =
+JSON.stringify(produtos,null,2);
+
+}
+
+function removerProduto(index){
+
+produtos.splice(index,1);
+
+atualizarLista();
+
+}
+
+function limparCampos(){
+
+document.getElementById('nome').value = '';
+
+document.getElementById('preco').value = '';
+
+document.getElementById('imagem').value = '';
+
+}
+
+carregarProdutos();
