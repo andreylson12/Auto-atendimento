@@ -9,6 +9,7 @@ body{
 background:#0b0b0b;
 color:white;
 padding:20px;
+padding-right:360px;
 }
 
 header{
@@ -24,6 +25,7 @@ color:#f5c518;
 header p{
 color:#ccc;
 margin-top:10px;
+font-size:18px;
 }
 
 .categorias{
@@ -102,16 +104,25 @@ border-radius:12px;
 font-size:18px;
 font-weight:bold;
 cursor:pointer;
+transition:0.3s;
+}
+
+.card button:hover{
+transform:scale(1.03);
 }
 
 .carrinho{
+position:fixed;
+right:20px;
+top:20px;
+width:320px;
+height:calc(100vh - 40px);
 background:#1a1a1a;
 padding:25px;
 border-radius:20px;
-margin-top:20px;
-max-width:500px;
-margin-left:auto;
-margin-right:auto;
+box-shadow:0 0 20px rgba(0,0,0,0.6);
+z-index:999;
+overflow:auto;
 }
 
 .carrinho h2{
@@ -122,11 +133,16 @@ text-align:center;
 
 #itens{
 margin-bottom:20px;
+max-height:250px;
+overflow:auto;
 }
 
 #itens p{
 font-size:20px;
 margin-bottom:10px;
+padding:10px;
+background:#111;
+border-radius:10px;
 }
 
 #total{
@@ -146,35 +162,38 @@ border-radius:15px;
 font-size:22px;
 font-weight:bold;
 cursor:pointer;
+margin-top:10px;
+transition:0.3s;
+}
+
+.carrinho button:hover{
+transform:scale(1.02);
 }
 
 .pix{
 display:none;
-background:#1a1a1a;
-padding:25px;
+background:#111;
+padding:20px;
 border-radius:20px;
-margin-top:30px;
+margin-top:20px;
 text-align:center;
-max-width:400px;
-margin-left:auto;
-margin-right:auto;
 }
 
 .pix h2{
-font-size:35px;
+font-size:32px;
 margin-bottom:20px;
 }
 
 .pix img{
 width:100%;
-max-width:300px;
+max-width:260px;
 background:white;
 padding:15px;
 border-radius:20px;
 }
 
 #valorPix{
-font-size:45px;
+font-size:42px;
 color:#00ff88;
 font-weight:bold;
 margin-bottom:20px;
@@ -184,4 +203,55 @@ margin-bottom:20px;
 margin-top:15px;
 font-size:18px;
 color:#ccc;
+}
+
+.pagamentos{
+display:flex;
+flex-direction:column;
+gap:10px;
+margin-top:20px;
+}
+
+.btnPix{
+background:#00ff88 !important;
+color:#000;
+}
+
+.btnCartao{
+background:#0088ff !important;
+color:white;
+}
+
+.btnDinheiro{
+background:#f5c518 !important;
+color:#000;
+}
+
+@media(max-width:900px){
+
+body{
+padding-right:20px;
+}
+
+.carrinho{
+position:relative;
+width:100%;
+height:auto;
+right:0;
+top:0;
+margin-top:30px;
+}
+
+.produtos{
+grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+}
+
+.card h2{
+font-size:22px;
+}
+
+.preco{
+font-size:28px;
+}
+
 }
