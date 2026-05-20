@@ -105,15 +105,37 @@ function atualizarCarrinho(){
 
 const itens = document.getElementById('itens');
 
-itens.innerHTML = '';
+const agrupados = {};
 
 carrinho.forEach(item => {
 
-itens.innerHTML += `
-<p>${item.nome} - R$ ${item.preco}</p>
-`;
+if(agrupados[item.nome]){
+
+agrupados[item.nome].quantidade++;
+
+}else{
+
+agrupados[item.nome] = {
+preco:item.preco,
+quantidade:1
+};
+
+}
 
 });
+
+itens.innerHTML = '';
+
+for(let nome in agrupados){
+
+itens.innerHTML += `
+<p>
+${nome} x${agrupados[nome].quantidade}
+- R$ ${(agrupados[nome].preco * agrupados[nome].quantidade).toFixed(2)}
+</p>
+`;
+
+}
 
 document.getElementById('total').innerHTML =
 `Total: R$ ${total.toFixed(2)}`;
@@ -132,7 +154,83 @@ return;
 
 document.getElementById('pixArea').style.display = 'block';
 
+document.getElementById('tituloPagamento').innerHTML =
+'💳 PAGAMENTO PIX';
+
 document.getElementById('valorPix').innerHTML =
 `R$ ${total.toFixed(2)}`;
+
+document.getElementById('imagemPix').style.display =
+'block';
+
+document.getElementById('mensagemPagamento').innerHTML =
+'📱 Escaneie o QR Code e realize o pagamento';
+
+}
+
+function mostrarCartao(){
+
+if(total <= 0){
+
+alert('Adicione produtos');
+
+return;
+
+}
+
+document.getElementById('pixArea').style.display =
+'block';
+
+document.getElementById('tituloPagamento').innerHTML =
+'💳 PAGAMENTO CARTÃO';
+
+document.getElementById('valorPix').innerHTML =
+`R$ ${total.toFixed(2)}`;
+
+document.getElementById('imagemPix').style.display =
+'none';
+
+document.getElementById('mensagemPagamento').innerHTML =
+'💳 Aproxime ou insira seu cartão na maquininha ao lado';
+
+}
+
+function mostrarDinheiro(){
+
+if(total <= 0){
+
+alert('Adicione produtos');
+
+return;
+
+}
+
+document.getElementById('pixArea').style.display =
+'block';
+
+document.getElementById('tituloPagamento').innerHTML =
+'💵 PAGAMENTO DINHEIRO';
+
+document.getElementById('valorPix').innerHTML =
+`R$ ${total.toFixed(2)}`;
+
+document.getElementById('imagemPix').style.display =
+'none';
+
+document.getElementById('mensagemPagamento').innerHTML =
+'💵 Realize o pagamento em dinheiro';
+
+}
+
+function limparCarrinho(){
+
+carrinho = [];
+
+total = 0;
+
+atualizarCarrinho();
+
+document.getElementById('pixArea').style.display =
+'none';
 
 }
