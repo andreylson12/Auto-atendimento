@@ -34,5 +34,11 @@
     "preco":10,
     "categoria":"espetinhos",
     "imagem":"espetinho.png"
+  },
+  {
+    "nome": "RED BULL",
+    "preco": 13,
+    "categoria": "refrigerantes",
+    "imagem": "RED BULL.PNG"
   }
 ]
