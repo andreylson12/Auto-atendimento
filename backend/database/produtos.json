@@ -1,0 +1,20 @@
+[
+  {
+    "nome":"Heineken",
+    "preco":9,
+    "categoria":"cervejas",
+    "imagem":"heineken.png"
+  },
+  {
+    "nome":"Skol",
+    "preco":5,
+    "categoria":"cervejas",
+    "imagem":"skol.png"
+  },
+  {
+    "nome":"Espetinho",
+    "preco":10,
+    "categoria":"espetinhos",
+    "imagem":"espetinho.png"
+  }
+]
