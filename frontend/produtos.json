@@ -1,0 +1,38 @@
+[
+  {
+    "nome":"Heineken",
+    "preco":9,
+    "categoria":"cervejas",
+    "imagem":"heineken.png"
+  },
+  {
+    "nome":"Skol 600ml",
+    "preco":10,
+    "categoria":"cervejas",
+    "imagem":"skol_600.png"
+  },
+  {
+    "nome":"Original 600ml",
+    "preco":12,
+    "categoria":"cervejas",
+    "imagem":"original_600.png"
+  },
+  {
+    "nome":"Refrigerante Lata",
+    "preco":6,
+    "categoria":"refrigerantes",
+    "imagem":"refri_lata.png"
+  },
+  {
+    "nome":"Refrigerante 2L",
+    "preco":12,
+    "categoria":"refrigerantes",
+    "imagem":"refri_2lt.png"
+  },
+  {
+    "nome":"Espetinho",
+    "preco":10,
+    "categoria":"espetinhos",
+    "imagem":"espetinho.png"
+  }
+]
