@@ -1,59 +1,20 @@
-let produtos = [
-
-{
-nome:"Heineken",
-preco:9,
-categoria:"cervejas",
-imagem:"heineken.png"
-},
-
-{
-nome:"Skol 600ml",
-preco:10,
-categoria:"cervejas",
-imagem:"skol_600.png"
-},
-
-{
-nome:"Original 600ml",
-preco:12,
-categoria:"cervejas",
-imagem:"original_600.png"
-},
-
-{
-nome:"Refrigerante Lata",
-preco:6,
-categoria:"refrigerantes",
-imagem:"refri_lata.png"
-},
-
-{
-nome:"Refrigerante 2L",
-preco:12,
-categoria:"refrigerantes",
-imagem:"refri_2lt.png"
-},
-
-{
-nome:"Espetinho Carne Bovina",
-preco:10,
-categoria:"espetinhos",
-imagem:"espetinho.png"
-},
-{
-nome:"Espetinho Frango com bacon",
-preco:10,
-categoria:"espetinhos",
-imagem:"espetinho frango com bacon.png"
-}
-
-];
+let produtos = [];
 
 let carrinho = [];
+
 let total = 0;
 
+async function carregarProdutos(){
+
+const response = await fetch(
+'frontend/produtos.json'
+);
+
+produtos = await response.json();
+
 renderizarProdutos(produtos);
+
+}
 
 function renderizarProdutos(lista){
 
@@ -158,7 +119,8 @@ return;
 
 }
 
-document.getElementById('pixArea').style.display = 'block';
+document.getElementById('pixArea').style.display =
+'block';
 
 document.getElementById('tituloPagamento').innerHTML =
 '💳 PAGAMENTO PIX';
@@ -240,3 +202,5 @@ document.getElementById('pixArea').style.display =
 'none';
 
 }
+
+carregarProdutos();
