@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Point Beer</title>
+<title>POINT BEER</title>
 
 <link rel="stylesheet" href="frontend/css/style.css">
 
@@ -15,8 +15,13 @@
 <body>
 
 <header>
+
 <h1>🍺 POINT BEER 🍺</h1>
-<p>Autoatendimento Inteligente</p>
+
+<p>
+Autoatendimento Inteligente
+</p>
+
 </header>
 
 <div class="categorias">
@@ -37,6 +42,10 @@
 🍛 Jantinhas
 </button>
 
+<button onclick="renderizarProdutos(produtos)">
+🔥 Todos
+</button>
+
 </div>
 
 <section class="produtos" id="produtos"></section>
@@ -51,23 +60,41 @@
 Total: R$ 0,00
 </div>
 
-<button onclick="mostrarPix()">
-PAGAR
+<div class="pagamentos">
+
+<button class="btnPix" onclick="mostrarPix()">
+💳 PIX
 </button>
 
-</section>
+<button class="btnCartao" onclick="mostrarCartao()">
+💳 CARTÃO
+</button>
 
-<section class="pix" id="pixArea" style="display:none;">
+<button class="btnDinheiro" onclick="mostrarDinheiro()">
+💵 DINHEIRO
+</button>
 
-<h2>💳 PAGAMENTO PIX</h2>
+<button onclick="limparCarrinho()">
+🗑️ LIMPAR
+</button>
+
+</div>
+
+<section class="pix" id="pixArea">
+
+<h2 id="tituloPagamento">
+💳 PAGAMENTO
+</h2>
 
 <div id="valorPix"></div>
 
-<img src="frontend/imagens/SEU_QR_PIX.png">
+<img src="frontend/imagens/SEU_QR_PIX.png" id="imagemPix">
 
-<p>
+<p id="mensagemPagamento">
 Após pagar mostre o comprovante
 </p>
+
+</section>
 
 </section>
 
